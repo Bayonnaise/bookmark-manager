@@ -29,5 +29,4 @@ feature "User adds a new link" do
 			click_button 'Add link'
 		end
 	end
-
 end
