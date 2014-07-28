@@ -4,8 +4,6 @@
 	<title>Bookmark Manager</title>
 </head>
 <body>
-
-	TEST
 	<ul>
   <% @links.each do |link| %>
     <li><a href="<%= link.url %>"><%= link.title %></a></li>
@@ -16,10 +14,10 @@
 		<form action="/links" method="post">
 		Url: <input type="text" name="url">
 		Title: <input type="text" name="title">
+		Tags: <input type="text" name="tags">
 		<input type= "submit" value="Add link">
 		</form>
 		</div>
-
 
 </body>
 </html>
