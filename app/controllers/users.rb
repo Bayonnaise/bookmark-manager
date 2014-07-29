@@ -22,7 +22,7 @@
 		user.password_token_timestamp = Time.now
 		user.save
 
-		<a href="localhost:9292/users/reset_password/#{token}">Reset password</a>
+		# <a href="localhost:9292/users/reset_password/#{token}">Reset password</a>
 		# erb :"users/reset_password/:token"
 	end
 
