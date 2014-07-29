@@ -15,30 +15,33 @@ post '/users' do
   end
 end
 
-post '/users/reset_password/' do
+post '/users/reset_password' do
 	email = params[:email]
 	user = User.first(:email => email)
-	user.password_token = (1..64).map{('A'..'Z').to_a.sample}.join
-	user.password_token_timestamp = Time.now
-	user.save
+	password_token = (1..49).map{('A'..'Z').to_a.sample}.join
+	password_token_timestamp = Time.now
+	user.update(:password_token => password_token, :password_token_timestamp => password_token_timestamp)
+
 	send_email(user)
+	flash[:notice] = "Password reset email sent"
+	redirect to('/')
 end
 
 get '/users/reset_password/:token' do
 	user = User.first(:password_token => token)
-
-
 end
 
 API_KEY = ENV['MAILGUN_API_KEY']
 API_URL = "https://api:#{API_KEY}@api.mailgun.net/v2/postmaster@app27923148.mailgun.org"
 
 def send_email(user)
-  RestClient.post API_URL+"/messages",
+	link = "localhost:9292/users/reset_password/#{user.password_token}"
 
-  :from => "Dave and Michiel <me@samples.mailgun.org>",
+  RestClient.post "https://api:#{API_KEY}"\
+  "@api.mailgun.net/v2/app27923148.mailgun.org/messages",
+  :from => "Dave and Michiel <me@app27923148.mailgun.org>",
   :to => user.email,
   :subject => "Password reset",
-  :text => <a href="localhost:9292/users/reset_password/#{user.password_token}">Click here to reset your password.</a>
+  :text => "Here is the link: http://#{link}"
 end
 
