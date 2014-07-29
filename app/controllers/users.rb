@@ -14,3 +14,18 @@
 	    erb :"users/new"
 	  end
 	end
+
+	post '/users/reset_password/' do
+		email = params[:email]
+		user = User.first(:email => email)
+		user.password_token = (1..64).map{('A'..'Z').to_a.sample}.join
+		user.password_token_timestamp = Time.now
+		user.save
+
+		<a href="localhost:9292/users/reset_password/#{token}">Reset password</a>
+		# erb :"users/reset_password/:token"
+	end
+
+	get '/users/reset_password/:token' do
+		user = User.first(:password_token => token)
+	end
