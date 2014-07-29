@@ -34,7 +34,7 @@ API_KEY = ENV['MAILGUN_API_KEY']
 API_URL = "https://api:#{API_KEY}@api.mailgun.net/v2/postmaster@app27923148.mailgun.org"
 
 def send_email(user)
-  RestClient.post API_URL+"/messages"
+  RestClient.post API_URL+"/messages",
 
   :from => "Dave and Michiel <me@samples.mailgun.org>",
   :to => user.email,
