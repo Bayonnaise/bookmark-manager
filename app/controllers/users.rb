@@ -28,7 +28,8 @@ post '/users/reset_password' do
 end
 
 get "/users/reset_password/:token" do
-	# user = User.first(:password_token => token)
+	token = params[:token]
+	user = User.first(:password_token => token)
 	erb :"users/reset_password"
 end
 
