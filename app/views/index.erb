@@ -1,16 +1,9 @@
-
-	Home
+<div id='links-container'>
 	<ul>
   <% @links.each do |link| %>
-    <li><a href="<%= link.url %>"><%= link.title %></a></li>
-  <% end %>
+   	<%= partial :link, :locals => {:link => link} %>
+   <% end %>
 	</ul>
+</div>
 
-	<div id="new-link">
-		<form action="/links" method="post">
-		Url: <input type="text" name="url">
-		Title: <input type="text" name="title">
-		Tags: <input type="text" name="tags">
-		<input type= "submit" value="Add link">
-		</form>
-		</div>
+	

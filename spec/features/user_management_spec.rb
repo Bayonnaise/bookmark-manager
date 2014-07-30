@@ -80,6 +80,5 @@ feature 'User requests password reset' do
   	fill_in 'password_confirmation', :with => "dog"
   	click_button "Confirm"
   	expect(User.first.password_token).to be nil
-  	expect(page).to have_content("Home")
   end
 end

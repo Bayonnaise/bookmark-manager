@@ -20,6 +20,7 @@ require_relative 'controllers/links'
 require_relative 'messaging'
  
 set :views, './app/views'
+set :public_dir, './public'
 enable :sessions
 set :session_secret, 'super secret'
 set :partial_template_engine, :erb
