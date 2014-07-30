@@ -3,8 +3,9 @@
 ENV['RACK_ENV'] = 'test'
 ENV['DATABASE_URL'] = "postgres://ohujkjsphlzsfl:RqUQR7BEyl2d3_GxJUTFc-eKmG@ec2-54-197-241-82.compute-1.amazonaws.com:5432/dfb13astcg6b47"
 ENV['MAILGUN_API_KEY'] = "key-1ctxo78pq5kb65kxbm3-4beu7etqa2c4"
+ENV['ROOT_URL'] = "http://localhost:9292"
 
-require File.join(File.dirname(__FILE__), '..', '..', 'lib/bookmark_manager.rb')
+require File.join(File.dirname(__FILE__), '..', '..', 'bookmark_manager.rb')
 
 require 'capybara'
 require 'capybara/cucumber'
