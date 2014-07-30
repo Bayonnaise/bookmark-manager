@@ -29,7 +29,7 @@ end
 
 get "/users/reset_password/:token" do
 	# user = User.first(:password_token => token)
-	erb :reset_password
+	erb :"users/reset_password"
 end
 
 API_KEY = ENV['MAILGUN_API_KEY']
