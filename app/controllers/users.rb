@@ -46,3 +46,10 @@ def send_email(user)
   :text => "Here is the link: http://#{link}"
 end
 
+post "/users/password_updated" do
+	email = params[:email]
+	user = User.first(:email => email)
+	updatedpass = params[:password]
+	user.password_digest = BCrypt::Password.create(updatedpass)
+	redirect to('/')
+end
