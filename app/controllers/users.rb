@@ -28,8 +28,7 @@ post '/users/reset_password' do
 end
 
 get '/users/reset_password/:token' do
-	user = User.first(:password_token => token)
-	raise user.inspect
+	# user = User.first(:password_token => token)
 	erb :reset_password
 end
 
