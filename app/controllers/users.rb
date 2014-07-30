@@ -28,8 +28,8 @@ post '/users/reset_password' do
 end
 
 get "/users/reset_password/:token" do
-	token = params[:token]
-	@user = User.first(:password_token => token)
+	@token = params[:token]
+	@user = User.first(:password_token => @token)
 	erb :"users/reset_password"
 end
 
@@ -39,6 +39,7 @@ API_URL = "https://api:#{API_KEY}@api.mailgun.net/v2/postmaster@app27923148.mail
 def send_email(user)
 	# link = "http://radiant-refuge-8401.herokuapp.com/users/reset_password/#{user.password_token}"
 	link = "localhost:9292/users/reset_password/#{user.password_token}"
+  
   RestClient.post "https://api:#{API_KEY}"\
   "@api.mailgun.net/v2/app27923148.mailgun.org/messages",
   :from => "Dave and Michiel <me@app27923148.mailgun.org>",
@@ -48,9 +49,11 @@ def send_email(user)
 end
 
 post "/users/password_updated" do
-	email = params[:email]
-	user = User.first(:email => email)
+	@token = params[:token]
+	@user = User.first(:password_token => @token)
 	updatedpass = params[:password]
-	user.password_digest = BCrypt::Password.create(updatedpass)
+	@user.update(:password_digest => BCrypt::Password.create(updatedpass),
+								:password_token => nil,
+								:password_token_timestamp => nil) 
 	redirect to('/')
 end

@@ -14,7 +14,7 @@ class User
 	property :email, String, :unique => true, :message => "This email is already taken"
 	property :password_digest, Text
 	property :password_token, String, :length => 64 
-	property :password_token_timestamp, String
+	property :password_token_timestamp, Time
 
 	def password=(password)
 		@password = password
