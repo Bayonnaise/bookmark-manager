@@ -29,6 +29,7 @@ end
 
 get '/users/reset_password/:token' do
 	user = User.first(:password_token => token)
+	raise user.inspect
 	erb :reset_password
 end
 
