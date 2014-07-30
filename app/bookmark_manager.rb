@@ -17,8 +17,8 @@ require_relative 'controllers/tags'
 require_relative 'controllers/sessions'
 require_relative 'controllers/links'
 
-
-
+require_relative 'messaging'
+ 
 set :views, './app/views'
 enable :sessions
 set :session_secret, 'super secret'
@@ -28,8 +28,3 @@ use Rack::Flash
 use Rack::MethodOverride
 
 helpers MyHelpers
-
-
-
-
-

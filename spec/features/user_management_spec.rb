@@ -68,6 +68,18 @@ feature 'User requests password reset' do
   end
 
   scenario 'when requesting reset' do
-  	
+  	visit '/sessions/new'
+  	fill_in 'forgot_email', :with => "test@test.com"
+  	expect(Messaging).to receive(:send_email).with(User.first)
+  	click_button "Reset password"
+  	expect(page).to have_content("Password reset email sent")
+
+  	token = User.first.password_token
+  	visit "/users/reset_password/#{token}"
+  	fill_in 'password', :with => "dog"
+  	fill_in 'password_confirmation', :with => "dog"
+  	click_button "Confirm"
+  	expect(User.first.password_token).to be nil
+  	expect(page).to have_content("Home")
   end
 end
