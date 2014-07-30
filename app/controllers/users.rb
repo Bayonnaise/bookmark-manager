@@ -27,7 +27,7 @@ post '/users/reset_password' do
 	redirect to('/')
 end
 
-get '/users/reset_password/:token' do
+get "/users/reset_password/:token" do
 	# user = User.first(:password_token => token)
 	erb :reset_password
 end
