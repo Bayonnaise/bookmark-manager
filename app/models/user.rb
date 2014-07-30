@@ -13,7 +13,7 @@ class User
 	property :id, Serial
 	property :email, String, :unique => true, :message => "This email is already taken"
 	property :password_digest, Text
-	property :password_token, String
+	property :password_token, String, :length => 64 
 	property :password_token_timestamp, String
 
 	def password=(password)
