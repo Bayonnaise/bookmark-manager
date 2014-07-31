@@ -1,6 +1,45 @@
-body {
-	background-image: url('/images/linedpaper.png');
-  font-family: Helvetica, Arial, Sans-serif;
+* {
+	box-sizing: border-box;
+}
+
+.page-wrap {
+	min-height: 100%;
+	margin-bottom: -70px;
+}
+
+.page-wrap:after {
+	content: "";
+	display: block;
+}
+
+.site-footer, .page-wrap:after {
+	height:70px;
+}
+
+a {
+	color: #b77843;
+  text-decoration: none; /*no underlining*/
+}
+
+.button {
+	cursor: pointer; /* pointer looks like a hand */
+  display: inline-block; /* display inline but have dimensions */
+  width: 110px;
+  background-color: #82B743;
+  border: 2px solid white;
+  color: white; /*text colour*/
+  text-decoration: none; /*no underlining*/
+  padding: 5px 10px;
+  text-align: center;
+  border-radius: 4px; /*rounded corners*/
+  margin-left: 5px;
+  margin-right: 5px;
+  text-shadow: 0 0 2px rgba(0,0,0, 0.4); /*for readability*/
+  font-size: 16px;
+}
+
+.button.highlighted {
+  background-color: #b77843;
 }
 
 header {  
@@ -12,55 +51,74 @@ header {
   font-size: 22px;
 }
 
-a.button {
-  display: inline-block; /* display inline but have dimensions */
-  width: 80px;
-  background-color: #82B743;
-  border: 2px solid white;
-  color: white; /*text colour*/
-  text-decoration: none; /*no underlining*/
-  padding: 5px 10px;
-  text-align: center;
-  border-radius: 4px; /*rounded corners*/
-  margin-left: 5px;
-  margin-right: 5px;
-  text-shadow: 0 0 2px rgba(0,0,0, 0.4); /*for readability*/
-}
+	header a {
+		color: white;
+		text-decoration: none;
+	}
 
-a.button.highlighted {
-  background-color: #b77843;
-}
+	/* every immediate child to be vertically centered */
+	header > * {
+	  margin: auto 0;
+	}
 
-header a {
-	color: white;
-	text-decoration: none;
-}
+	header #logo {    
+	  display: flex; 
+	  margin-right: 20px;     
+	}
 
-/* every immediate child to be vertically centered */
-header > * {
-  margin: auto 0;
-}
-header #logo {    
-  display: flex;      
-}
-
-#user-links {
-  flex: 5; /* http://learnlayout.com/flexbox.html */
-  -webkit-flex: 5;
+	header #user-links {
+  flex: 2; /* http://learnlayout.com/flexbox.html */
+  -webkit-flex: 2;
   text-align: right;  
+	}
+
+	header #welcome-text {
+		font-size: 16px;
+	}
+
+	header #user-links > * {
+		display: inline-block;
+	}
+
+body {
+	background-image: url('/images/linedpaper.png');
+  font-family: Helvetica, Arial, Sans-serif;
+  height: 100%;
+}
+
+h1 {
+	font-size: 20;
+	margin-bottom: 15;
+}
+
+.flash {
+	margin: 5px;
+	padding: 5px;
+	text-align: center;
+  border-radius: 4px;
+  box-shadow: 0 0 3px rgba(0,0,0,0.4);
+  color: white;
+}
+
+.flash.notice {
+	background-color: rgba(67,183,120,0.75);
+}
+
+.flash.errors {
+	background-color: red;
 }
 
 #add-link {
 	flex: 1; /* http://learnlayout.com/flexbox.html */
   -webkit-flex: 1;
-  text-align: center;  
+  text-align: left;  
 }
 
-#links-container {
+#container {
 	background-color: white;
   margin: 40px;
-  box-shadow: 0 0 5px rgba(0,0,0,0.4);
-  padding: 10px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+  padding: 20px;
 }
 
 .link {
@@ -85,4 +143,33 @@ header #logo {
     /* http://learnlayout.com/float.html and the next 4 sections */
     float: right; 
     font-size: 12px;
+  }
+
+  .new-input {
+		width: 400;
+		height: 30;
+		margin-bottom: 10;
+		font-size: 16;
+	}
+
+footer {
+	display: flex;
+	background-color: rgba(0,0,0,0.2);
+}
+
+  footer > * {
+  	margin: auto inherit;
+  }
+
+  footer img {
+  	vertical-align: top;
+  }
+
+  footer #technologies {
+  	-webkit-flex: 1;
+  	flex: 1;
+  }
+
+  footer p {
+  	padding: 5px 25px;
   }

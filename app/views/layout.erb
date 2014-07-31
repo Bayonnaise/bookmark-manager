@@ -6,10 +6,15 @@
 </head>
 
 <body>
-	
-	<%= erb :header %>
-  <%= erb :flash %>
-  <%= yield %>
+	<div class="page-wrap">
+		<%= erb :header %>
+  	<%= erb :flash %>
+
+  	<div id='container'>
+  		<%= yield %>
+  	</div>
+  </div>
+  <%= erb :footer %>
 
 </body>
 </html>

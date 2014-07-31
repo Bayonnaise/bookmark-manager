@@ -1,14 +1,17 @@
-Please sign in.
+<h1>Please sign in</h1>
 
 <form method="post" action="/sessions">
-	Email: <input type="text" name="email">
-	Password: <input type="password" name="password">
-	<input class='button' type="submit" value="Sign in">
+	<p><input class="new-input" type="text" name="email" placeholder='Email'></p>
+	<p><input class="new-input" type="password" name="password" placeholder='Password'></p>
+	<p><input class='button' type="submit" value="Sign in"></p>
 </form>
 
-Forgotten your password?
+<br>
+<br>
+
+<h1>Forgotten your password?</h1>
 
 <form method="post" action="/users/reset_password">
-	Email: <input type="text" name="forgot_email">
-	<input class='button' type="submit" value="Reset password">
+	<p><input class="new-input" type="text" name="forgot_email"placeholder='Email'></p>
+	<p><input class='button' type="submit" value="Reset"></p>
 </form>

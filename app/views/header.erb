@@ -6,9 +6,12 @@
 	<div id="add-link">
 	<a href="/links/new" class="button highlighted">Add link</a>
 	</div>
-	
+
 		<div id="user-links">
 		<% if current_user %>
+			<div id='welcome-text'>
+				Welcome, <%= current_user.email %>
+			</div>
 			<form id="sign-out" method="post" action="/sessions">
 			<input type="hidden" name="_method" value="delete">
 			<input class="button" type="submit" value="Sign out">
