@@ -15,6 +15,7 @@ class Messaging
 	  :from => "Dave and Michiel <me@app27923148.mailgun.org>",
 	  :to => user.email,
 	  :subject => "Password reset",
-	  :text => "Here is the link: #{@link}"
+	  :text => "Click this link to reset your password: #{@link}"
 	end
+
 end

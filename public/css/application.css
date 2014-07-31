@@ -42,6 +42,24 @@ a {
   background-color: #b77843;
 }
 
+.button.delete {
+	background-color: red;
+	width: 80px;
+	font-size: 10px;
+	color: white;
+	float: right;
+}
+
+.button.edit {
+	width: 80px;
+	font-size: 10px;
+	color: white;
+}
+
+.button a {
+	color: white;
+}
+
 header {  
   height: 40px;
   background-color: grey;
@@ -121,6 +139,13 @@ h1 {
   padding: 20px;
 }
 
+.new-input {
+	width: 400;
+	height: 30;
+	margin-bottom: 10;
+	font-size: 16;
+}
+
 .link {
   background-color: #EEE; /* same as #EEEEEE */
   box-shadow: 0 0 5px rgba(0,0,0,0.4);
@@ -145,12 +170,15 @@ h1 {
     font-size: 12px;
   }
 
-  .new-input {
-		width: 400;
-		height: 30;
-		margin-bottom: 10;
-		font-size: 16;
-	}
+.tag {
+	display: inline-block;
+	background-color: #EEE; /* same as #EEEEEE */
+  box-shadow: 0 0 5px rgba(0,0,0,0.4);
+  /* 10px for top and bottom, inherit from parent */
+  /* for left and right */
+  margin: 10px inherit;
+  padding: 15px 10px;
+}
 
 footer {
 	display: flex;

@@ -1,0 +1,9 @@
+
+	<h1> Submit a new link </h1>
+	<form action="/links" method="post">
+		<input class="new-input" type="text" name="url" placeholder="url" value="<%=@link.url%>">
+		<p><input class="new-input" type="text" name="title" placeholder="Title" value="<%=@link.title%>"></p>
+		<p><input class="new-input" type="text" name="tags" placeholder="Tags" value="<%=@link.tags.map{|link|link.text}.join(",")%>"></p>
+		<p><input class="new-input" type="text" name="description" placeholder="Description" value="<%=@link.description%>"></p>
+		<p><input class="button" type= "submit" value="Confirm">
+	</form>

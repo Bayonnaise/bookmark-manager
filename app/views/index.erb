@@ -1,7 +1,16 @@
 
+	<h1>Bookmarks</h1>
 	<ul>
   <% @links.each do |link| %>
    	<%= partial :link, :locals => {:link => link} %>
+   <% end %>
+	</ul>
+
+	<h1>Tags</h1>
+	<ul>
+  <% Tag.all.each do |tag| %>
+  	<% taglink = "/tags/#{tag.text}"%> 
+   	<a href=<%=taglink%>><li class="tag"><%= tag.text %></li></a>
    <% end %>
 	</ul>
 

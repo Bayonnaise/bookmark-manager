@@ -6,7 +6,7 @@ include SessionHelpers
 feature "User signs up" do 
 	scenario "when being logged out" do 
 		expect(lambda { sign_up }).to change(User, :count).by(1)
-		expect(page).to have_content("Welcome, alice@hotmail.com")
+		expect(page).to have_content("Welcome, Alice")
 		expect(User.first.email).to eq("alice@hotmail.com")
 	end
 
@@ -25,29 +25,31 @@ end
 
 feature "User signs in" do
 	before(:each) do
-		User.create(:email => "test@test.com",
+		User.create(:username => "Testname",
+								:email => "test@test.com",
 								:password => 'test',
 								:password_confirmation => 'test')
 	end
 
 	scenario "with correct credentials" do
 		visit '/'
-		expect(page).not_to have_content("Welcome, test@test.com")
+		expect(page).not_to have_content("Welcome, Testname")
 		sign_in('test@test.com', 'test')
-		expect(page).to have_content("Welcome, test@test.com")
+		expect(page).to have_content("Welcome, Testname")
 	end
 
 	scenario "with incorrect credentials" do
 		visit '/'
-		expect(page).not_to have_content("Welcome, test@test.com")
+		expect(page).not_to have_content("Welcome, Testname")
 		sign_in('test@test.com', 'wrong')
-		expect(page).not_to have_content("Welcome, test@test.com")
+		expect(page).not_to have_content("Welcome, Testname")
 	end
 end
 
 feature 'User signs out' do
   before(:each) do
-    User.create(:email => "test@test.com", 
+    User.create(:username => "Testname",
+    						:email => "test@test.com", 
                 :password => 'test', 
                 :password_confirmation => 'test')
   end
@@ -56,13 +58,14 @@ feature 'User signs out' do
     sign_in('test@test.com', 'test')
     click_button "Sign out"
     expect(page).to have_content("Good bye!")
-    expect(page).not_to have_content("Welcome, test@test.com")
+    expect(page).not_to have_content("Welcome, Testname")
   end
 end
 
 feature 'User requests password reset' do
 	before(:each) do
-    User.create(:email => "test@test.com", 
+    User.create(:username => "Testname",
+    						:email => "test@test.com", 
                 :password => 'test', 
                 :password_confirmation => 'test')
   end
@@ -71,7 +74,7 @@ feature 'User requests password reset' do
   	visit '/sessions/new'
   	fill_in 'forgot_email', :with => "test@test.com"
   	expect(Messaging).to receive(:send_email).with(User.first)
-  	click_button "Reset password"
+  	click_button "Reset"
   	expect(page).to have_content("Password reset email sent")
 
   	token = User.first.password_token

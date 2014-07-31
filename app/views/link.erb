@@ -1,8 +1,17 @@
 <li class='link'>
  	<a class='title' href="<%= link.url %>"><%= link.title %></a>
- 	<div class='description'>
- 		owhfohrgoihorighoeirhgoehroghreo
+ 	<div class='button delete'>
+ 		<% url = "/links/delete/#{link.id}" %>
+ 		<a href=<%=url%>>Delete</a> 
  	</div>
+ 	<div class='description'>
+ 		<%=link.description%>
+ 	</div>
+ 	<div class='button edit'>
+ 		<% url = "/links/edit/#{link.id}" %>
+ 		<a href=<%=url%>>Edit</a>
+ 	</div>
+ 	
  	<span class='source'>
  		added yesterday by
  		<a href="#">Dave and Michiel</a>

@@ -18,5 +18,7 @@ task :auto_migrate do
   DataMapper.auto_migrate!
   puts "Auto-migrate complete (data could have been lost)"
 end
+
+
 # Finally, don't forget that before you do any of that stuff, 
 # you need to create a database first.
